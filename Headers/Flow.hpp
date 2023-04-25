@@ -25,6 +25,10 @@
 // EndLic
 #pragma once
 
+#include "FlowClass.hpp"
+
 namespace JCR6_Show {
+	Flow* FlowReg(std::string n);
+	void RegisterFlow(std::string n, Flow* f);
 	void InitFlow();
 }
