@@ -82,8 +82,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>Exe</OutDir>
-    <IncludePath>E:\Projects\Applications\Slyvina\Libs\Units\Headers;E:\Projects\Applications\Slyvina\Libs\JCR6\Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Projects\Applications\Slyvina\Libs\JCR6\3rdParty\zlib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Projects\Applications\Slyvina\Libs\TQSL\SDL2\include;E:\Projects\Applications\Slyvina\Libs\TQSL\Headers;E:\Projects\Applications\Slyvina\Libs\Units\Headers;E:\Projects\Applications\Slyvina\Libs\JCR6\Headers;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Projects\Applications\Slyvina\Libs\TQSL\SDL2;E:\Projects\Applications\Slyvina\Libs\JCR6\3rdParty\zlib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,7 +139,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_Image.lib;SDL2_mixer.lib;SDL2main.lib;zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>pwsh BuildJCR6.ps1</Command>
@@ -159,6 +159,7 @@
     <ClInclude Include="..\..\Libs\Units\Headers\SlyvQuickHead.hpp" />
     <ClInclude Include="Headers\Crash.hpp" />
     <ClInclude Include="Headers\Flow.hpp" />
+    <ClInclude Include="Headers\FlowAudio.hpp" />
     <ClInclude Include="Headers\FlowClass.hpp" />
     <ClInclude Include="Headers\Glob.hpp" />
   </ItemGroup>
@@ -177,12 +178,14 @@
     <ClCompile Include="..\..\Libs\Units\Source\SlyvBank.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvDir.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvDirry.cpp" />
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvMD5.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvQCol.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvSTOI.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvStream.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvString.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvTime.cpp" />
     <ClCompile Include="..\..\Libs\Units\Source\SlyvVolumes.cpp" />
+    <ClCompile Include="Source.cpp\Source.cpp" />
     <ClCompile Include="Source\Crash.cpp" />
     <ClCompile Include="Source\Glob.cpp" />
     <ClCompile Include="Source\JCR6_Show.cpp" />
