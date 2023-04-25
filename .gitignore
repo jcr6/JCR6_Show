@@ -1,6 +1,7 @@
 ## Jeroen's typical files to ignore
 JCR6_Assets.jcr
 MKL_*
+MKL_Backup
 *.MKL.*
 Output
 
@@ -404,3 +405,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+MKL_Backup/2.JCR
+MKL_Backup/2.JCR
