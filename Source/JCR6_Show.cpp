@@ -28,6 +28,8 @@
 #include <SlyvArgParse.hpp>
 #include <SlyvQCol.hpp>
 
+#include <SDL.h>
+
 #include "../Headers/FlowClass.hpp"
 #include "../Headers/Glob.hpp"
 
@@ -50,6 +52,7 @@ int main(int c, char** a) {
 	FlagConfig C{};
 	AddFlag_Bool(C, "NoHead", false);
 	InitGlob(c,a,C);
+	//IntRes(); // debug only
 	if (CLI.arguments.size() < 2) {
 		QCol->White("Usage: ");
 		QCol->Magenta(StripAll(a[0]));
