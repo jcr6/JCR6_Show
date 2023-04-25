@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{463fb210-5f41-49d2-9ffa-4bfcc7534200}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\Units">
+      <UniqueIdentifier>{6f339e8a-ab86-4de6-bc7e-2ac99af823e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\External">
+      <UniqueIdentifier>{6c0e5313-f61b-4a0a-a3d4-6aa5f996ab4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\External\Units">
+      <UniqueIdentifier>{2de6cdd5-3ee3-4c13-8fda-99a4edcdffc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\External\JCR6">
+      <UniqueIdentifier>{334b3b5b-97ea-4041-b19b-e65367370d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\JCR6">
+      <UniqueIdentifier>{80390529-6e7b-44c0-acda-fed87c6526d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Assets">
+      <UniqueIdentifier>{2e3ac033-f844-49a4-870d-0a9f03d859d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\TQSL">
+      <UniqueIdentifier>{e0eb4980-3571-4d2a-888e-edaa51fcec92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\TQSL\dll">
+      <UniqueIdentifier>{e366c5a0-bf6f-437e-84ff-a3d9300ba2e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\FlowClass.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\Units\Headers\SlyvMKL.hpp">
+      <Filter>Header Files\External\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\Units\Headers\SlyvQuickHead.hpp">
+      <Filter>Header Files\External\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Glob.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_Core.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_JQL.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_QuakePAK.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_WAD.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_Westwood.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libs\JCR6\Headers\JCR6_zlib.hpp">
+      <Filter>Header Files\External\JCR6</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Crash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Flow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvArgParse.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvBank.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvDir.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvDirry.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvQCol.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvSTOI.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvStream.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvString.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvTime.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\Units\Source\SlyvVolumes.cpp">
+      <Filter>Source Files\External\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JCR6_Show.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Glob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_Core.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_JQL.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_QuakePAK.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_RealDir.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_WAD.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_Westwood.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\JCR6\Source\JCR6_zlib.cpp">
+      <Filter>Source Files\External\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Crash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\TQSL\Source\TQSA.cpp">
+      <Filter>Source Files\External\TQSL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\TQSL\Source\TQSE.cpp">
+      <Filter>Source Files\External\TQSL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libs\TQSL\Source\TQSG.cpp">
+      <Filter>Source Files\External\TQSL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Flow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\..\Libs\JCR6\3rdParty\zlib\zlib.dll">
+      <Filter>Source Files\External\JCR6</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="JCR6_Output\JCR6_Assets.jcr">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libFLAC-8.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libjpeg-9.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libmodplug-1.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libmpg123-0.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libogg-0.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libopus-0.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libopusfile-0.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libpng16-16.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libtiff-5.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libvorbis-0.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libvorbisfile-3.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\libwebp-7.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\SDL2.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\SDL2_image.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\SDL2_mixer.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\Libs\TQSL\SDL2\zlib1.dll">
+      <Filter>Source Files\External\TQSL\dll</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Fonts\Mini.jfbf">
+      <Filter>Resource Files\Assets</Filter>
+    </None>
+    <None Include="Assets\Fonts\Ryanna.jfbf">
+      <Filter>Resource Files\Assets</Filter>
+    </None>
+  </ItemGroup>
+</Project>
