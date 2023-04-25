@@ -27,6 +27,8 @@
 #include <SlyvQuickHead.hpp>
 #include <SlyvStream.hpp>
 #include <SlyvString.hpp>
+#include <SlyvGINIE.hpp>
+#include <SlyvMD5.hpp>
 
 #include <JCR6_Core.hpp>
 #include <JCR6_JQL.hpp>
@@ -43,6 +45,9 @@ using namespace Units;
 using namespace JCR6;
 
 namespace JCR6_Show {
+
+	const char* IDHash{ "91b397db8f1dc198555ce2d1cffbb5a3" };
+
 	Slyvina::Units::ParsedArg CLI;
 	static JT_Dir _IntRes{ nullptr };
 
@@ -72,12 +77,18 @@ namespace JCR6_Show {
 	std::string IntResFile() { return ExtractDir(CLI.myexe) + "/JCR6_Assets.jcr"; }
 
 	JT_Dir IntRes() {
-		_initJCR();
-		if (!FileExists(IntResFile())) Crash(TrSPrintF("File not found: %s",IntResFile().c_str()));
-		if (!_IntRes) {
-			QCol->Doing("Analysing", StripDir(IntResFile()));
-			_IntRes = JCR6_Dir(IntResFile());			
-		}
+		try {
+			_initJCR();
+			if (!FileExists(IntResFile())) Crash(TrSPrintF("File not found: %s", IntResFile().c_str()));
+			if (!_IntRes) {
+				QCol->Doing("Analysing", StripDir(IntResFile()));
+				_IntRes = JCR6_Dir(IntResFile());
+				Assert((bool)_IntRes, "Failed to load: " + IntResFile());
+				auto ID{ ParseUGINIE(_IntRes->GetString("Identify.ini")) };
+				//std::cout << md5(ID->Value("check", "show")) << " <==> " << IDHash << "\n"; // debug only
+				Assert(md5(ID->Value("check", "show")) == IDHash, "Identification wrong");
+			}
+		} catch (std::exception e) { Crash(e.what()); }
 		return _IntRes;
 	}
 
