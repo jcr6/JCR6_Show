@@ -3,6 +3,7 @@ JCR6_Assets.jcr
 MKL_*
 MKL_Backup
 *.MKL.*
+Exe
 Output
 
 
