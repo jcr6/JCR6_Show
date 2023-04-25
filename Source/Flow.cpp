@@ -23,10 +23,34 @@
 // 
 // Version: 23.04.25
 // EndLic
+
+#include <Slyvina.hpp>
+#include <SlyvString.hpp>
+
+#include "../Headers/Crash.hpp"
 #include "../Headers/Flow.hpp"
+#include "../Headers/FlowClass.hpp"
+
+#include "../Headers/FlowAudio.hpp"
+
+using namespace std;
+using namespace Slyvina;
+using namespace Units;
+
 
 namespace JCR6_Show {
+	static map<string, Flow*> _FlowReg{};
+
+	Flow* FlowReg(string n) {
+		Trans2Upper(n);
+		Assert(_FlowReg.count(n), "There is no flow for: " + n);
+		return _FlowReg[n];
+	}
+
+	void RegisterFlow(std::string n, Flow* f) { _FlowReg[n] = f; }
+
 	void InitFlow() {
+		InitFlowAudio();
 	}
 
 }
