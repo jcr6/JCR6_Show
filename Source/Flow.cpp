@@ -97,6 +97,16 @@ namespace JCR6_Show {
 			BigFont()->Text(n, 2, 2);
 			if (F->Show) F->Show();
 			Flip();
+			if (KeyHit(SDLK_KP_ENTER) || KeyHit(SDLK_RETURN)) {
+				//QCol->Red("End this show\n");
+				Flush();
+				return false;
+			}
+			if (KeyHit(SDLK_ESCAPE)) {
+				QCol->Red("User requested a program termination\n");
+				QCol->Reset();
+				exit(1);
+			}
 			return !(F->Done() || AppTerminate());
 		} catch (std::exception e) {
 			Crash(e.what());
