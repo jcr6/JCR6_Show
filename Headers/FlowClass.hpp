@@ -28,18 +28,27 @@
 
 namespace JCR6_Show {
 	typedef void (*FShow)();
+	typedef void(*FInit)(std::string);
+	typedef bool (*Fertig)();	
 
 	class Flow {
+	private:
+		std::string _Name{ "" };
 	public:
 		FShow Show{ nullptr };
-		FShow Init{ nullptr };
+		FInit Init{ nullptr };
+		Fertig Done{ nullptr };
 
-		uint32 Width{Slyvina::TQSG::DesktopWidth()-25};
-		uint32 Height{ 250 };
+		Slyvina::uint32 Width{ Slyvina::TQSG::DesktopWidth() - 25u };
+		Slyvina::uint32 Height{ 250 };
 
-		inline Flow(FShow _Sh = nullptr, FShow _In = nullptr) {
+		inline std::string Name() { return _Name; }
+
+		inline Flow(std::string _Nm,FShow _Sh = nullptr, FInit _In = nullptr,Fertig _Done=nullptr) {
 			Show = _Sh;
 			Init = _In;
+			Done = _Done;
+			_Name = _Nm;
 		}
 	};
 }

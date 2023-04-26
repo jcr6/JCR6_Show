@@ -30,13 +30,17 @@
 
 #include <SDL.h>
 #include <TQSG.hpp>
+#include <TQSA.hpp>
 
 #include "../Headers/Flow.hpp"
 #include "../Headers/FlowClass.hpp"
+#include "../Headers/FlowAudio.hpp"
 #include "../Headers/Glob.hpp"
 
 using namespace Slyvina;
 using namespace Units;
+using namespace TQSG;
+using namespace TQSA;
 
 MKL_Init;
 
@@ -44,14 +48,14 @@ namespace JCR6_Show {
 	void VersionList() {
 		MKL_VersionP("JCR6_Show.cpp", __DATE__);
 		MKL_Lic("JCR6_Show.cpp", "General Public License 3");
+		FA_Version();
 	}
 	
 }
 
 int main(int c, char** a) {
 	using namespace JCR6_Show;
-	MKL_VersionP("JCR6_Show.cpp", __DATE__);
-	MKL_Lic("JCR6_Show.cpp", "General Public License 3");
+	VersionList();
 	FlagConfig C{};
 	AddFlag_Bool(C, "NoHead", false);
 	InitGlob(c,a,C);
@@ -63,5 +67,19 @@ int main(int c, char** a) {
 		QCol->Cyan("<Entry/Entries>\n");
 		QCol->Reset();
 		return 0;
+	}
+	InitFlowAudio();
+	GoGraphics();
+	Init_TQSA();
+	for (uint32 i = 1; i < CLI.arguments.size(); i++) {
+		auto F{ RecEnt(CLI.arguments[i]) };
+		if (F) {
+			QCol->Doing("Entry", CLI.arguments[i], "\t");
+			QCol->Magenta("(" + F->Name() + ")\n");
+			if (F->Init) F->Init(CLI.arguments[i]);
+			do {} while (RunFlow(F, CLI.arguments[i]));
+		} else {
+			QCol->Error("I didn't find the right way to work with entry " + CLI.arguments[i]);
+		}
 	}
 }

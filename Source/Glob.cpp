@@ -50,18 +50,23 @@ namespace JCR6_Show {
 
 	Slyvina::Units::ParsedArg CLI;
 	static JT_Dir _IntRes{ nullptr };
+	static JT_Dir _Res{ nullptr };
 
 	void JPaniek(std::string e) {
 		Crash("JCR6 Error ->" + e);
 	}
 		
 	static void _initJCR() {
-		JCR_InitZlib();
-		Westwood_Init();
-		InitQuake();
-		InitWAD();
-		InitJQL();
-		JCR6PANIC = JPaniek;
+		static bool done{ false };
+		if (!done) {
+			JCR_InitZlib();
+			Westwood_Init();
+			InitQuake();
+			InitWAD();
+			InitJQL();
+			JCR6PANIC = JPaniek;
+		}
+		done = true;
 	}
 
 	void InitGlob(int c, char** a,FlagConfig &CFG) {
@@ -72,6 +77,28 @@ namespace JCR6_Show {
 
 	void Title() {
 		if (!CLI.bool_flags["NoHead"]) QuickHeader("JCR6 Show", 2023);
+	}
+
+	Slyvina::TQSG::TImageFont BigFont() {
+		using namespace Slyvina::TQSG;
+		static TImageFont Ret{ nullptr };
+		if (!Ret) {
+			QCol->Doing("Get Font", "Ryanna");
+			Ret = LoadImageFont(IntRes(),"Fonts/Ryanna.jfbf");
+			Assert((bool)Ret, "Font not loaded properly");
+		}
+		return Ret;
+	}
+
+	Slyvina::TQSG::TImageFont MiniFont() {
+		using namespace Slyvina::TQSG;
+		static TImageFont Ret{ nullptr };
+		if (!Ret) {
+			QCol->Doing("Get Font", "Mini");
+			Ret = LoadImageFont(IntRes(), "Fonts/Mini.jfbf");
+			Assert((bool)Ret, "Font not loaded properly");
+		}
+		return Ret;
 	}
 
 	std::string IntResFile() { return ExtractDir(CLI.myexe) + "/JCR6_Assets.jcr"; }
@@ -90,6 +117,20 @@ namespace JCR6_Show {
 			}
 		} catch (std::exception e) { Crash(e.what()); }
 		return _IntRes;
+	}
+
+	Slyvina::JCR6::JT_Dir Res() {
+		try {
+			_initJCR();
+			if (!FileExists(ResFile())) Crash(TrSPrintF("File not found: %s", ResFile().c_str()));
+			if (!_Res) {
+				QCol->Doing("Analysing", ResFile());
+				_Res = JCR6_Dir(ResFile());
+				Assert((bool)_Res, "Failed to load: " + ResFile());
+				//cout << "DEBUG\n"; for (auto E : _Res->_Entries) cout << ">" << E.second->Name() << endl; cout << "END DEBUG\n";
+			}
+		} catch (std::exception e) { Crash(e.what()); }
+		return _Res;
 	}
 
 }

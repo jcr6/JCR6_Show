@@ -23,6 +23,7 @@
 // 
 // Version: 23.04.26
 // EndLic
+
 #pragma once
 
 #include <SlyvBank.hpp>
@@ -38,4 +39,7 @@ namespace JCR6_Show {
 	Flow* FlowReg(std::string n);
 	void RegisterFlow(std::string n, Flow* f);
 	void InitFlow();
+
+	bool RunFlow(Flow*,std::string);
+
 }

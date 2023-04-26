@@ -26,21 +26,69 @@
 
 #include <TQSA.hpp>
 
+#include <SlyvMKL.hpp>
 #include <SlyvQCol.hpp>
+#include <SlyvTime.hpp>
 
+#include "../Headers/Crash.hpp"
+#include "../Headers/Glob.hpp"
 #include "../Headers/Flow.hpp"
 #include "../Headers/FlowClass.hpp"
+#include "../Headers/FlowAudio.hpp"
 
+using namespace std;
 using namespace Slyvina;
 using namespace Units;
 using namespace TQSA;
 
 namespace JCR6_Show {
 
-	static void AudioInit() {}
-	static void AudioRun() {}
+	static TAudio LoadedAudio;
+	static string Artist{ "" }, Notes{ "" };
+	static uint64 PlayTime{ 0 };
+	static string _PT{ "" };
+	static int PChannel{ 0 };
 
-	static Flow AudioFlow{AudioRun,AudioInit};
+	static void AudioInit(string AudEntry) {
+		cout << "Loading: " << AudEntry << "\n"; // debug
+		LoadedAudio = LoadAudio(Res(), AudEntry);
+		if (!LoadedAudio) {
+			QCol->Red("FATAL "); QCol->Error("Couldn't load audio: " + AudEntry);
+			QCol->Red("FATAL "); QCol->Error("SDL2 Reported: " + string(SDL_GetError()));
+			QCol->Red("FATAL "); QCol->Error("JCR6 Reported: " + JCR6::Last()->ErrorMessage);
+			exit(2);
+		}
+		auto E{ Res()->Entry(AudEntry) };
+		Artist = E->Author();
+		Notes = E->Notes();
+		PlayTime = 0;
+		PChannel = LoadedAudio->Play();
+		_PT = CurrentTime();
+	}
+
+	static void AudioRun() {
+		if (Artist.size()) MiniFont()->Text("Artist: " + Artist, 2, 80);
+		MiniFont()->Text(Notes, 2, 100);
+		if (_PT != CurrentTime()) {
+			PlayTime++;
+			_PT = CurrentTime();
+		}
+		int64 RMin = PlayTime / 60;
+		int64 RHor = RMin / 60;
+		MiniFont()->Text(TrSPrintF("Time: %d:%02d:%02d", RHor, RMin % 60, PlayTime % 60), 2, 120);
+	}
+
+	static bool Playing() {
+		// cout << Mix_Playing(PChannel) << endl; // debug
+		return !Mix_Playing(PChannel);
+	}
+
+	static Flow AudioFlow{"Audio",AudioRun,AudioInit,Playing};
+
+	void FA_Version() {
+		MKL_VersionP("FlowAudio.cpp", __DATE__);
+		MKL_Lic("FlowAudio.cpp", "General Public License 3");
+	}
 
 	void InitFlowAudio() {
 		QCol->Doing("Registering", "Audio routines");		
@@ -48,6 +96,5 @@ namespace JCR6_Show {
 		RegisterFlow("MP3", &AudioFlow);  // Moving Picture Experts Group - Audio Layer III
 		RegisterFlow("WAV", &AudioFlow);  // Wave
 		RegisterFlow("OGG", &AudioFlow);  // OGG / OGG Vorbis
-
 	}
 }

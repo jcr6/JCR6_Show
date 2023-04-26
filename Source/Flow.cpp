@@ -31,6 +31,7 @@
 #include <SlyvQCol.hpp>
 
 #include <TQSG.hpp>
+#include <TQSE.hpp>
 
 #include "../Headers/Crash.hpp"
 #include "../Headers/Glob.hpp"
@@ -44,15 +45,17 @@ using namespace std;
 using namespace Slyvina;
 using namespace Units;
 using namespace TQSG;
+using namespace TQSE;
 
 
 namespace JCR6_Show {
 	static map<string, Flow*> _FlowReg{};
+	static bool __never() { return false; }
 
 	void GoGraphics() {
 		uint32 x{ 0 }, y{ 0 };
-		for (uint32 i = 1; i < CLI.arguments.size();i++) {
-			auto FR{ RecEnt(CLI[i]) };
+		for (uint32 i = 1; i < CLI.arguments.size(); i++) {
+			auto FR{ RecEnt(CLI.arguments[i]) };
 			if (FR) {
 				x = max(x, FR->Width);
 				y = max(y, FR->Height);
@@ -63,14 +66,15 @@ namespace JCR6_Show {
 	}
 
 	Flow* RecEnt(std::string f, Bank B) {
-		Trans2Upper(f);
-		if (f.size() && _FlowReg.count(f)) return _FlowReg[f];
+		auto e{ Upper(ExtractExt(f)) };
+		if (e.size() && _FlowReg.count(e)) return FlowReg(e);
 		return nullptr;
 	}
 
 	Flow* FlowReg(string n) {
 		Trans2Upper(n);
 		Assert(_FlowReg.count(n), "There is no flow for: " + n);
+		if (!_FlowReg[n]->Done) _FlowReg[n]->Done = __never;
 		return _FlowReg[n];
 	}
 
@@ -78,6 +82,26 @@ namespace JCR6_Show {
 
 	void InitFlow() {
 		InitFlowAudio();
+	}
+
+	bool RunFlow(Flow* F,string n) {
+		try {
+			static uint32 Hue;
+			Poll(); Cls();
+			Hue = (Hue + 1) % 360;
+			for (uint32 y = 0; y < ScreenHeight(); y++) {
+				SetColorHSV((Hue + (y / 5)) % 360, 1, .5);
+				Line(0, y, ScreenWidth(), y);
+			}
+			SetColor(255, 255, 255);
+			BigFont()->Text(n, 2, 2);
+			if (F->Show) F->Show();
+			Flip();
+			return !(F->Done() || AppTerminate());
+		} catch (std::exception e) {
+			Crash(e.what());
+			return true;
+		}
 	}
 
 }

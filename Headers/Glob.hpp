@@ -24,17 +24,27 @@
 // Version: 23.04.25
 // EndLic
 #pragma once
+
 #include <SlyvArgParse.hpp>
+#include <SlyvVolumes.hpp>
+
+#include <TQSG.hpp>
 
 #include <JCR6_Core.hpp>
+
 namespace JCR6_Show {
 	extern Slyvina::Units::ParsedArg CLI;
 
 	void InitGlob(int c, char** a, Slyvina::Units::FlagConfig& CFG);
 	void Title();
-
+	
+	Slyvina::TQSG::TImageFont BigFont();
+	Slyvina::TQSG::TImageFont MiniFont();
 
 	std::string IntResFile();
 	Slyvina::JCR6::JT_Dir IntRes();
+
+	inline std::string ResFile() { return AVolPath( CLI.arguments[0]); }
+	Slyvina::JCR6::JT_Dir Res();
 
 }

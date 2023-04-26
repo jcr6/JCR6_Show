@@ -27,5 +27,7 @@
 
 
 namespace JCR6_Show {
+	void FA_Version();
+
 	void InitFlowAudio();
 }
