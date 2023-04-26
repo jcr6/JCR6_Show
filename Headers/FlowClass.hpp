@@ -21,10 +21,10 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.04.25
+// Version: 23.04.26
 // EndLic
 #pragma once
-
+#include <TQSG.hpp>
 
 namespace JCR6_Show {
 	typedef void (*FShow)();
@@ -33,6 +33,9 @@ namespace JCR6_Show {
 	public:
 		FShow Show{ nullptr };
 		FShow Init{ nullptr };
+
+		uint32 Width{Slyvina::TQSG::DesktopWidth()-25};
+		uint32 Height{ 250 };
 
 		inline Flow(FShow _Sh = nullptr, FShow _In = nullptr) {
 			Show = _Sh;
