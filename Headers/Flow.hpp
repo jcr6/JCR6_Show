@@ -21,13 +21,20 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.04.25
+// Version: 23.04.26
 // EndLic
 #pragma once
+
+#include <SlyvBank.hpp>
 
 #include "FlowClass.hpp"
 
 namespace JCR6_Show {
+
+	void GoGraphics();
+
+	Flow* RecEnt(std::string f, Bank B = nullptr);
+
 	Flow* FlowReg(std::string n);
 	void RegisterFlow(std::string n, Flow* f);
 	void InitFlow();
