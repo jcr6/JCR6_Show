@@ -53,7 +53,7 @@ namespace JCR6_Show {
 	static JT_Dir _Res{ nullptr };
 
 	void JPaniek(std::string e) {
-		Crash("JCR6 Error ->" + e);
+		Crash("JCR6 Error ->" + e + "\n" + Last()->MainFile + "::" + Last()->Entry);
 	}
 		
 	static void _initJCR() {
