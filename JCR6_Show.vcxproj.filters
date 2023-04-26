@@ -158,7 +158,7 @@
     <ClCompile Include="..\..\Libs\Units\Source\SlyvMD5.cpp">
       <Filter>Source Files\External\Units</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp\Source.cpp">
+    <ClCompile Include="Source\FlowAudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
