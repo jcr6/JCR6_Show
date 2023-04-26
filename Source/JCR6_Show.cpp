@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.04.25
+// Version: 23.04.26
 // EndLic
 #include <SlyvMKL.hpp>
 #include <SlyvQuickHead.hpp>
@@ -29,7 +29,9 @@
 #include <SlyvQCol.hpp>
 
 #include <SDL.h>
+#include <TQSG.hpp>
 
+#include "../Headers/Flow.hpp"
 #include "../Headers/FlowClass.hpp"
 #include "../Headers/Glob.hpp"
 
@@ -43,6 +45,7 @@ namespace JCR6_Show {
 		MKL_VersionP("JCR6_Show.cpp", __DATE__);
 		MKL_Lic("JCR6_Show.cpp", "General Public License 3");
 	}
+	
 }
 
 int main(int c, char** a) {
