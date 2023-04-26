@@ -21,10 +21,33 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.04.25
+// Version: 23.04.26
 // EndLic
+
 #include <TQSA.hpp>
 
+#include <SlyvQCol.hpp>
+
+#include "../Headers/Flow.hpp"
+#include "../Headers/FlowClass.hpp"
+
+using namespace Slyvina;
+using namespace Units;
+using namespace TQSA;
+
 namespace JCR6_Show {
-	void InitFlowAudio() {}
+
+	static void AudioInit() {}
+	static void AudioRun() {}
+
+	static Flow AudioFlow{AudioRun,AudioInit};
+
+	void InitFlowAudio() {
+		QCol->Doing("Registering", "Audio routines");		
+		RegisterFlow("FLAC", &AudioFlow); // Free Lossless Audio Codec
+		RegisterFlow("MP3", &AudioFlow);  // Moving Picture Experts Group - Audio Layer III
+		RegisterFlow("WAV", &AudioFlow);  // Wave
+		RegisterFlow("OGG", &AudioFlow);  // OGG / OGG Vorbis
+
+	}
 }
