@@ -41,6 +41,7 @@ using namespace Slyvina;
 using namespace Units;
 using namespace TQSA;
 
+
 namespace JCR6_Show {
 
 	static TAudio LoadedAudio;
@@ -50,7 +51,7 @@ namespace JCR6_Show {
 	static int PChannel{ 0 };
 
 	static void AudioInit(string AudEntry) {
-		cout << "Loading: " << AudEntry << "\n"; // debug
+		// cout << "Loading: " << AudEntry << "\n"; // debug
 		LoadedAudio = LoadAudio(Res(), AudEntry);
 		if (!LoadedAudio) {
 			QCol->Red("FATAL "); QCol->Error("Couldn't load audio: " + AudEntry);
@@ -79,7 +80,7 @@ namespace JCR6_Show {
 	}
 
 	static bool Playing() {
-		// cout << Mix_Playing(PChannel) << endl; // debug
+		// cout << Mix_Playing(PChannel) << endl; // debug		
 		return !Mix_Playing(PChannel);
 	}
 
