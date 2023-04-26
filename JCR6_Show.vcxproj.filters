@@ -81,6 +81,9 @@
     <ClInclude Include="Headers\FlowAudio.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\FlowImage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Libs\Units\Source\SlyvArgParse.cpp">
@@ -159,6 +162,9 @@
       <Filter>Source Files\External\Units</Filter>
     </ClCompile>
     <ClCompile Include="Source\FlowAudio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FlowImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

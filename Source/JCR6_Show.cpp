@@ -35,6 +35,7 @@
 #include "../Headers/Flow.hpp"
 #include "../Headers/FlowClass.hpp"
 #include "../Headers/FlowAudio.hpp"
+#include "../Headers/FlowImage.hpp"
 #include "../Headers/Glob.hpp"
 
 using namespace Slyvina;
@@ -69,6 +70,7 @@ int main(int c, char** a) {
 		return 0;
 	}
 	InitFlowAudio();
+	InitImage();
 	GoGraphics();
 	Init_TQSA();
 	for (uint32 i = 1; i < CLI.arguments.size(); i++) {
