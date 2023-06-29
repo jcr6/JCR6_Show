@@ -32,7 +32,7 @@
 
 namespace JCR6_Show {
 
-	void GoGraphics();
+	void GoGraphics(std::vector<std::string>*);
 
 	Flow* RecEnt(std::string f, Bank B = nullptr);
 

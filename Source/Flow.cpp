@@ -52,10 +52,12 @@ namespace JCR6_Show {
 	static map<string, Flow*> _FlowReg{};
 	static bool __never() { return false; }
 
-	void GoGraphics() {
+	void GoGraphics(vector<string>*entries) {
 		uint32 x{ 0 }, y{ 0 };
-		for (uint32 i = 1; i < CLI.arguments.size(); i++) {
-			auto FR{ RecEnt(CLI.arguments[i]) };
+		//for (uint32 i = 1; i < CLI.arguments.size(); i++) {
+		//	auto FR{ RecEnt(CLI.arguments[i]) };
+		for(auto FE:*entries) {
+			auto FR{ RecEnt(FE) };
 			if (FR) {
 				x = max(x, FR->Width);
 				y = max(y, FR->Height);
