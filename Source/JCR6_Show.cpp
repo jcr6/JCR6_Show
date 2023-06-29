@@ -71,17 +71,40 @@ int main(int c, char** a) {
 	}
 	InitFlowAudio();
 	InitImage();
-	GoGraphics();
-	Init_TQSA();
+	auto entries{ vector<string>() };
 	for (uint32 i = 1; i < CLI.arguments.size(); i++) {
-		auto F{ RecEnt(CLI.arguments[i]) };
+		auto e{ CLI.arguments[i] };
+		auto ue{ Upper(e) };
+		//QCol->Doing("Debug", e + "\t" + ue);
+		if (ue == "ALL") {
+			QCol->Doing("Requested", "All (viewable) entries");
+			auto jes{ Res()->Entries() };
+			for (auto je : *jes) {
+				auto F{ RecEnt(je->Name()) };
+				if (F) entries.push_back(je->Name());
+			}
+		} else if (ue == "ALLAUDIO" || ue == "ALLMUSIC") {
+			QCol->Doing("Requested", "All audio entries");
+			auto jes{ Res()->Entries() };
+			for (auto je : *jes) {				
+				auto F{ RecEnt(je->Name()) };
+				//if (!F) QCol->Doing("NO", je->Name()); else { QCol->Doing(F->Name(), je->Name()); }
+				if (F && F->Name() == "Audio")
+					entries.push_back(je->Name());
+			}
+		} else entries.push_back(e);
+	}
+	GoGraphics(&entries);
+	Init_TQSA();
+	for (auto e:entries) {
+		auto F{ RecEnt(e) };
 		if (F) {
-			QCol->Doing("Entry", CLI.arguments[i], "\t");
+			QCol->Doing("Entry", e, "\t");
 			QCol->Magenta("(" + F->Name() + ")\n");
-			if (F->Init) F->Init(CLI.arguments[i]);
-			do {} while (RunFlow(F, CLI.arguments[i]));
+			if (F->Init) F->Init(e);
+			do {} while (RunFlow(F, e));
 		} else {
-			QCol->Error("I didn't find the right way to work with entry " + CLI.arguments[i]);
+			QCol->Error("I didn't find the right way to work with entry " + e);
 		}
 	}
 }
