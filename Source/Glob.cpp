@@ -60,7 +60,7 @@ namespace JCR6_Show {
 		static bool done{ false };
 		if (!done) {
 			JCR_InitZlib();
-			Westwood_Init();
+			//Westwood_Init();
 			InitQuake();
 			InitWAD();
 			InitJQL();
