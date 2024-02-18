@@ -107,4 +107,6 @@ int main(int c, char** a) {
 			QCol->Error("I didn't find the right way to work with entry " + e);
 		}
 	}
+	QCol->Cyan("Ok");
+	QCol->Reset();
 }
