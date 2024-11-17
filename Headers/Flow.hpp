@@ -34,7 +34,7 @@ namespace JCR6_Show {
 
 	void GoGraphics(std::vector<std::string>*);
 
-	Flow* RecEnt(std::string f, Bank B = nullptr);
+	Flow* RecEnt(std::string f, Slyvina::Units::Bank B = nullptr);
 
 	Flow* FlowReg(std::string n);
 	void RegisterFlow(std::string n, Flow* f);

@@ -56,6 +56,7 @@ namespace JCR6_Show {
 
 int main(int c, char** a) {
 	using namespace JCR6_Show;
+	using namespace std;
 	VersionList();
 	FlagConfig C{};
 	AddFlag_Bool(C, "NoHead", false);

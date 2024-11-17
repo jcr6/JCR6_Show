@@ -44,7 +44,7 @@ namespace JCR6_Show {
 	std::string IntResFile();
 	Slyvina::JCR6::JT_Dir IntRes();
 
-	inline std::string ResFile() { return AVolPath( CLI.arguments[0]); }
+	inline std::string ResFile() { return Slyvina::Units::AVolPath( CLI.arguments[0]); }
 	Slyvina::JCR6::JT_Dir Res();
 
 }
